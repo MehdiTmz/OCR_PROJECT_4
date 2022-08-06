@@ -1,24 +1,23 @@
-# Nom de famille
-# Prénom
-# Date de naissance
-# Sexe
-# Classement --> Il s'agit d'un chiffre positif.
-
 class Player:
-    
-    '''Used to name the instance instead having the memory adress'''
+
     def __repr__(self):
+
          return self.name
+
     def __str__(self):
+
         return "2"
-        
-    def __init__(self, name ='unknown', firstname = 'unknown', birthdate ='unknown', sex = 'unknown', rank ='unknown'):
+
+    def __init__(self, name ='unknown', firstname='unknown', birthdate='unknown', sex='unknown', rank='unknown'):
+
         self.name = name
         self.firstname = firstname
         self.birthdate = birthdate
         self.sex = sex
         self.rank = rank
-    def set_player_data(self,list):
+
+    def set_player_data(self, list):
+
         self.name = list[0]
         self.firstname = list[1]
         self.birthdate = list[2]
