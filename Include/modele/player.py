@@ -2,13 +2,14 @@ class Player:
 
     def __repr__(self):
 
-         return self.name
+        return self.name
 
     def __str__(self):
 
         return "2"
 
-    def __init__(self, name ='unknown', firstname='unknown', birthdate='unknown', sex='unknown', rank='unknown'):
+    def __init__(self, name='unknown', firstname='unknown',
+                 birthdate='unknown', sex='unknown', rank='unknown'):
 
         self.name = name
         self.firstname = firstname
