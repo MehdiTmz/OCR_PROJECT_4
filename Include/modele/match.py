@@ -5,7 +5,7 @@ class Match:
         self.player1 = player1
         self.player2 = player2
 
-    def result(self, state):
+    def match_result(self, state):
 
         if (state == 1):
 

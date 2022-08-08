@@ -1,8 +1,12 @@
+from datetime import datetime
 class Tour:
 
-    def __init__(self, match1, match2, match3, match4):
+    def __init__(self, name : str = 'unknown',
+                 list_player_pair : list = [],
+                 list_matches_result: list = []):
 
-        self.match1 = match1
-        self.match2 = match2
-        self.match3 = match3
-        self.match4 = match4
+        self.name = name
+        self.date_round_begin = datetime.today()
+        self.date_round_end = None
+        self.list_player_pair = list_player_pair
+        self.list_matches_result = list_matches_result

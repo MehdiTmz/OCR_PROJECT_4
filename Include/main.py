@@ -1,36 +1,48 @@
-from re import L
 import modele.player as player
-import view.view as view
+import modele.match as match
+import modele.tour as tour
+from datetime import datetime
 
-def match_result_control(player1,player2,state):
-    if(state == 1):
-        score1 = 1
-        score2 = 0
+STATIC_LIST_PLAYER = [
+                        player.Player('player'+str(1), 'name', 'test', 'H', 1),
+                        player.Player('player'+str(2), 'name', 'test', 'H', 2),
+                        player.Player('player'+str(3), 'name', 'test', 'H', 3),
+                        player.Player('player'+str(4), 'name', 'test', 'H', 8),
+                        player.Player('player'+str(5), 'name', 'test', 'H', 5),
+                        player.Player('player'+str(6), 'name', 'test', 'H', 6),
+                        player.Player('player'+str(7), 'name', 'test', 'H', 7),
+                        player.Player('player'+str(8), 'name', 'test', 'H', 4)]
+print('List_OK')
+'''test = tour.Tour(STATIC_LIST_PLAYER, 'round 1')
+list_of_ranks = test.list_player_round(True)
+test.temp_list_rank = list_of_ranks
 
-    elif(state == 2): 
-        score1 = 0
-        score2 = 1
+result_tour1 = test.tour()
+print(test.date_round_begin)
+print(test.date_round_end)
+print(result_tour1)'''
 
-    else: 
-        score1 = 0,5
-        score2 = 0,5
-    return ([player1,score1],[player2,score2])
+    '''def list_player_round(self,check_tour1):
 
-'''list = view.View.player_data()
-print(list)
-my_player = player.Player()
-my_player.set_player_data(list)
-print(my_player.rank)'''
-LIST_PLAYER = []
-ROUND1_RESULT = []
-for x in range(8):
-    print(x)
-    TEMP = player.Player('player' +str(x),x,x,x,x)
-    LIST_PLAYER.append(TEMP)
-for y in range(4):
-    STATE_POSSIBLE = view.View.match_result_view()
-    ROUND1_RESULT.append(match_result_control(LIST_PLAYER[y],LIST_PLAYER[y+4], STATE_POSSIBLE))
+        LIST_player = self.players
+        if (check_tour1 == True):
 
-MATCH_RESULT = match_result_control(LIST_PLAYER[0],LIST_PLAYER[1],STATE_POSSIBLE)
+            LIST_player.sort(key=lambda x: x.rank, reverse=False)
+            self.temp_list_rank = LIST_player
+            return LIST_player
 
-print(ROUND1_RESULT)
+        else:
+
+            LIST_player.sort(key=lambda x: x.score, reverse=True)
+            self.temp_list_rank = LIST_player
+            return LIST_player
+
+    def tour(self,n_of_match=4, check_tour1 = True):
+
+        tour_match_list = []
+        for x in range(n_of_match):
+            state = int(input())
+            temp_match = Match(self.temp_list_rank[x],self.temp_list_rank[x+n_of_match])
+            tour_match_list.append(temp_match.result(state))
+        self.date_round_end = datetime.today()
+        return tour_match_list'''

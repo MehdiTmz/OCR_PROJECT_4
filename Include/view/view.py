@@ -8,14 +8,14 @@ class View :
 
         return "2"
 
-    def player_data():
+    def player_input_data(self):
 
         print('Please enter the data of the player : ')
         name = input('Name : ')
         firstname = input('Firstname : ')
         birthdate = input('Birthdate : ') 
         sex = input('Sex : ')
-        rank = input('Rank : ')
+        rank = int(input('Rank : '))
         return [name,firstname,birthdate,sex,rank]
     
     def match_result_view():
