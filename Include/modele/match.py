@@ -1,3 +1,5 @@
+"""Define a match"""
+
 def set_match_score(state):
     if (state == 1):
 

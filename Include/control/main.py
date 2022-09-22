@@ -1,7 +1,8 @@
-from Include.modele.player import Player
-from Include.modele.match import Match
-from Include.modele.round import Round
-from Include.modele.tournament import Tournament
+"""Define tournament controler"""
+from modele.player import Player
+from modele.match import Match
+from modele.round import Round
+from modele.tournament import Tournament
 from datetime import datetime
 from controlTournament import ControlTournament
 from Include.view.view import View
@@ -41,13 +42,13 @@ else :
 def player_selection_control(full_player_list, view):
 
     players = []
-  
-    while(len(players) < 8):
+
+    while len(players) < 8:
 
         view.tournament_player_selection_display()
-        option = int(input())
+        option_player_selection = int(input())
 
-        if option == 1:
+        if option_player_selection == 1:
 
             player_name = input('Entrez le nom du joueur que vous recherchez :')
             player_found =[]
@@ -61,7 +62,7 @@ def player_selection_control(full_player_list, view):
             index_player = int(input('Confirmez le joueur : '))
             players.append(player_found[index_player - 1])
 
-        if option == 2:
+        if option_player_selection == 2:
 
             player = view.player_input_view()
             players.append(player)
@@ -72,15 +73,18 @@ def player_selection_control(full_player_list, view):
 
 def round_menu_control(tournament, view):
 
-    while(True):
+    while True :
         view.tournament_menu_display()
-        option = int(input('Veuillez selectionner un option : '))
+        option_between_round = int(input('Veuillez selectionner un option : '))
 
-        if option == 1:
+        if option_between_round == 1:
+
             break
-        if option == 2:
+
+        if option_between_round == 2:
+
             view.player_list_text(tournament)
-            
+
 def create_new_tournament(view):
 
     new_tournament = []
@@ -106,7 +110,7 @@ def create_new_tournament(view):
 view = View()
 list_all_tournament: list[Tournament] = []
 
-while(True):
+while True:
 
     view.start_menu_display()
     option = int(input())
