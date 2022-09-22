@@ -17,3 +17,12 @@ class Player:
         self.sex = sex
         self.rank = rank
         self.played_with = []
+        self.serialized_player = {}
+    
+    def serial_player(self):
+        self.serialized_player['name'] =  self.name
+        self.serialized_player['firstname'] =  self.firstname
+        self.serialized_player['birthdate'] = self.birthdate
+        self.serialized_player['sex'] = self.sex
+        self.serialized_player['rank'] = self.rank
+
