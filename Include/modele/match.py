@@ -1,22 +1,22 @@
 """Define a match"""
 
 def set_match_score(state):
-    if (state == 1):
+
+    if state == 1:
 
         score1 = 1.0
         score2 = 0.0
 
-    elif (state == 2):
+    elif state == 2:
 
         score1 = 0.0
         score2 = 1.0
 
     else:
-
         score1 = 0.5
         score2 = 0.5
-    
-    return score1, score2
+
+    return score1,score2
 
 class Match:
 
@@ -34,4 +34,3 @@ class Match:
         self.player1.played_with.append(self.player2)
         self.player2.played_with.append(self.player1)
         return (result[0], result[1])
- 

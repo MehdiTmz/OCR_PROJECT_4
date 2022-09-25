@@ -1,8 +1,8 @@
 """Define tournament controler"""
-from modele.player import Player
-from modele.match import Match
-from modele.round import Round
-from modele.tournament import Tournament
+from Include.modele.player import Player
+from Include.modele.match import Match
+from Include.modele.round import Round
+from Include.modele.tournament import Tournament
 from datetime import datetime
 from controlTournament import ControlTournament
 from Include.view.view import View
@@ -25,7 +25,6 @@ STATIC_LIST_PLAYER = [
                         Player('player'+str(7), 'name', 'test', 'H', RANK[6]),
                         Player('player'+str(8), 'name', 'test', 'H', RANK[7])]
 
-
 db = TinyDB('db.json')
 full_player_list: list[Player] = []
 serialized_full_player = []
@@ -33,11 +32,17 @@ serialized_full_player = []
 if db.table('player'):
     players_table = db.table('player')
     for player in players_table:
-        full_player_list.append(Player(player['name'],player['firstname'],player['birthdate'],player['sex'],player['rank']))
+        player_to_add = Player(player['name'],player['firstname'],
+                                player['birthdate'],player['sex'],player['rank'])
+        full_player_list.append(player_to_add)
         #players_table.truncate()
-
 else :
     players_table = db.table('player')
+
+if db.table('tournament'):
+    tournament_table = db.table('player')
+else:
+    tournament_table = db.table('player')
 
 def player_selection_control(full_player_list, view):
 
@@ -58,16 +63,19 @@ def player_selection_control(full_player_list, view):
                 if p.name == player_name:
                     print(count,': ' + p.name)
                     player_found.append(p)
+                    count += 1
+                else:
+                    print('Aucun joueur trouvé')
 
             index_player = int(input('Confirmez le joueur : '))
             players.append(player_found[index_player - 1])
 
         if option_player_selection == 2:
 
-            player = view.player_input_view()
+            new_player = view.player_input_view()
             players.append(player)
             player.serial_player()
-            players_table.insert(player.serialized_player)
+            players_table.insert(new_player.serialized_player)
 
     return players
 
@@ -83,17 +91,16 @@ def round_menu_control(tournament, view):
 
         if option_between_round == 2:
 
-            view.player_list_text(tournament)
+            view.player_list_ranking(tournament)
 
 def create_new_tournament(view):
 
     new_tournament = []
     new_tournament = ControlTournament(view)
-    tournament_player = player_selection_control(full_player_list,view)
-    #tournament_player = STATIC_LIST_PLAYER
+    # tournament_player = player_selection_control(full_player_list,view)
+    tournament_player = STATIC_LIST_PLAYER
     new_tournament.get_tournament_info(tournament_player)
 
-    #print(test.tournament.players)
     new_tournament.round_1('Round 1')
     print(new_tournament.tournament.players)
     round_menu_control(new_tournament.tournament.players,view)
@@ -103,7 +110,7 @@ def create_new_tournament(view):
     round_menu_control(new_tournament.tournament.players,view)
     new_tournament.round_x('Round 4')
     new_tournament.tournament.update_score_list()
-
+    view.final_tournament_list_ranking(new_tournament.tournament.players)
     return new_tournament.tournament
 
 
@@ -117,10 +124,12 @@ while True:
 
     if option == 1:
         new_tournament = []
-        print('hello')
         new_tournament = create_new_tournament(view)
-        print('hello')
+        for x in new_tournament.rounds:
+            print(x)
+
         list_all_tournament.append(new_tournament)
+
 
     if option == 2:
         player_to_add = view.player_input_view()
@@ -132,4 +141,5 @@ while True:
     if option == 4:
         print('Bonne journée !')
         break
+
     input('Appyuer sur un touche pour retourner au menu principale')

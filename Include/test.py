@@ -18,6 +18,22 @@ STATIC_LIST_PLAYER = [
                         player.Player('player'+str(8), 'name', 'test', 'H', 4)]
 print('List_OK')
 
+RANK = [
+    1, 2, 3, 4, 5, 6, 7, 8
+]
+
+random.shuffle(RANK)
+
+STATIC_LIST_PLAYER = [
+                        Player('player'+str(1), 'name', 'test', 'H', RANK[0]),
+                        Player('player'+str(2), 'name', 'test', 'H', RANK[1]),
+                        Player('player'+str(3), 'name', 'test', 'H', RANK[2]),
+                        Player('player'+str(4), 'name', 'test', 'H', RANK[3]),
+                        Player('player'+str(5), 'name', 'test', 'H', RANK[4]),
+                        Player('player'+str(6), 'name', 'test', 'H', RANK[5]),
+                        Player('player'+str(7), 'name', 'test', 'H', RANK[6]),
+                        Player('player'+str(8), 'name', 'test', 'H', RANK[7])]
+
 
 def round_control(players, name):
 
@@ -48,39 +64,10 @@ def update_score(list_player_score : list = [], round = []):
         actual_tour_score.append(round[x][1])
     actual_tour_score.sort(key=lambda x: x[1], reverse=True)
     print('1',actual_tour_score)
-    '''for x in range(8):
-        if(str(actual_tour_score[x][0]) in list_player_score.keys()):
-            list_player_score[str(actual_tour_score[x][0])] += actual_tour_score[x][1]
-    return list_player_score'''
+
 
 round_1 = round_control(STATIC_LIST_PLAYER, 'Round 1')
 #print(round_1.list_matches_result)
 list_player_score = create_tournament_score_board(STATIC_LIST_PLAYER)
 print(2,update_score(list_player_score, round_1.list_matches_result))
 print(3,round_1.list_matches_result)
-
-'''round_2 = round_control(STATIC_LIST_PLAYER, 'Round 2')
-print(round_2.list_matches_result)
-print(update_score(list_player_score, round_2.list_matches_result))
-print(round_2.list_matches_result)'''
-
-
-'''    if(actual_tour_score == []):
-        
-        test = []
-        for x in range(4):
-            actual_tour_score.append(round_result[x][0])
-            actual_tour_score.append(round_result[x][1])
-        actual_tour_score.sort(key=lambda x: x[1], reverse=True)
-        print(actual_tour_score)
-        for x in range(0,8,2):
-            list_pair_1 = []
-            list_pair_1.append(actual_tour_score[x][0])
-            list_pair_1.append(actual_tour_score[x+1][0])
-            test.append(list_pair_1)
-        result = {'match_list': test,'score': actual_tour_score}
-        return result'''
-
-    
-
-#print(update_score(create_tournament_score_board(STATIC_LIST_PLAYER)))

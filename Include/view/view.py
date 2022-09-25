@@ -1,5 +1,6 @@
 """Basic view"""
-from modele.player import Player
+from datetime import datetime
+from Include.modele.player import Player
 
 START_MENU_TEXT = {
     'Description': '*********** Bienvenue dans le menu principale *********',
@@ -11,14 +12,14 @@ START_MENU_TEXT = {
 }
 
 SUB_MENU_TOURNAMENT_TEXT = {
-    'Description' : 'Menu de tournoi',
+    'Description' : '*********** Menu de tournoi *********',
     'Option 1' : '1 : Passer au tour suivant',
     'Option 2' : '2 : Afficher la liste des joueurs du tournoi',
     'Option 3' : '3 : Changer le rang d''un joueur',
 }
 
 SUB_MENU_SELECT_PLAYERS = {
-    'Descirption' : 'Selection des joueurs',
+    'Descirption' : '*********** Selection des joueurs *********',
     'Option1' : '1 : Selectionner un joueur déjà existant',
     'Option2' : '2 : Ajouter un nouveau joueur'
 }
@@ -36,6 +37,8 @@ def print_list(list_player):
     """Print a list of player from a tournament player list"""
     for player in list_player:
         print(player[0].name)
+def print_end_menu():
+    print('**************************************************')
 
 class View :
     """View class
@@ -53,30 +56,47 @@ class View :
         rank = int(input('Rang : '))
         return Player(name,firstname,birthdate,sex,rank)
 
-    def input_match_result_view(self):
+    def input_match_result_view(self,player1,player2):
         """Ask the result of a match between 2 player"""
-        text = 'Veuillez entre le vainqueur du match (1 = Joueur1, 2 = Joueur2, 0 = Egalité) : '
+        print('Match : ' + str(player1) + ' contre ' + str(player2))
+        text ='Resultat (1 : joueur 1 gagne, 2 : joueur 2 gagne, un autre nombre si égalité) : '
         result = int(input(text))
         return result
 
     def start_menu_display(self):
         """Print the start menu"""
         print_menu(START_MENU_TEXT)
+        print_end_menu()
 
     def tournament_menu_display(self):
         """Print the tournament menu"""
         print_menu(SUB_MENU_TOURNAMENT_TEXT)
+        print_end_menu()
 
     def tournament_player_selection_display(self):
         """Print the menu to select the player who participate at the tournament"""
         print_menu(SUB_MENU_SELECT_PLAYERS)
+        print_end_menu()
 
     def get_tournament_info(self):
         "Ask the info about the tournament to the user"
-        name_tournament = input('Please enter the name of the tournament')
-        return name_tournament
+        name_tournament = input('Entrez le nom du tournoi : ')
+        place = input('Entrez l' + ' emplacement du tournoi : ')
+        #date = datetime.today()
+        time_text = 'Entrez le controleur de temps (1 : Blitz, 2 : Bullet, 3 : coup rapide):'
+        time_control = input(time_text)
+        description = input('Veuillez indiquez vos remarques : ')
+        return name_tournament,place,time_control,description
 
-    def player_list_text(self,tournament_list):
+    def player_list_ranking(self,tournament_list):
         """Print a list of player"""
         print_menu(LIST_PLAYER_TEXT)
         print_list(tournament_list)
+
+    def final_tournament_list_ranking(self,tournament_list):
+        """Print the winner and the winners of the list"""
+        print('*********** Resultats ***********')
+        print('Le vainqueur est ' + tournament_list[0][0].name)
+        print('Voici la liste finale des joueurs : ')
+        for player in tournament_list:
+            print(player[0].name, '- score : ', str(player[1]))
