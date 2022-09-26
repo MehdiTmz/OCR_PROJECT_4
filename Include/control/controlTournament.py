@@ -61,7 +61,8 @@ class ControlTournament:
         input("Veuillez appyer sur une touche 'enter' quand le round est terminé. ")
         round.date_round_end = datetime.today()
         round_match(self.view,round,self.tournament)
-        self.tournament.rounds.append(round.list_matches_result)
+        serialized_round = [round.list_matches_result,str(round.date_round_begin),str(round.date_round_end)]
+        self.tournament.rounds.append(serialized_round)
 
 
     def round_x(self, name):
@@ -77,12 +78,5 @@ class ControlTournament:
         input("Veuillez appuyer sur une touche 'enter' quand le round est terminé. ")
         round.date_round_end = datetime.today()
         round_match(self.view,round,self.tournament)
-        self.tournament.rounds.append(round.list_matches_result)
-
-    def list_player_serialization(self):
-        """Serialization of the final player list"""
-        serialized_list = []
-        for player in self.tournament.players:
-            player[0].serial_player()
-            player_with_score_serialized = [player[0].serialized_player, player[1]]
-            serialized_list.append(player_with_score_serialized)
+        serialized_round = [round.list_matches_result,str(round.date_round_begin),str(round.date_round_end)]
+        self.tournament.rounds.append(serialized_round)

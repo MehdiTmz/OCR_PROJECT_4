@@ -90,14 +90,23 @@ class Tournament:
                         break
 
                 self.pair_list.append(pair)
-                print(self.pair_list)
+                #print(self.pair_list)
 
     def serialize_tournament(self,players):
         """Serialization of the tournament data"""
         self.serialized_tournament['name'] = self.name
-        self.serialized_tournament['date'] = self.date
+        self.serialized_tournament['date'] = str(self.date)
         self.serialized_tournament['place'] = self.place
-        self.serialized_tournament['rounds'] = self.rounds
+        self.serialized_tournament['rounds'] = {}#self.rounds
         self.serialized_tournament['players'] = players
         self.serialized_tournament['time_controls'] = self.time_controls
         self.serialized_tournament['description'] = self.description
+
+    def list_player_serialization(self):
+        """Serialization of the final player list"""
+        serialized_list = {}
+        for player in self.players:
+            player[0].serial_player()
+            player_with_score_serialized = player[0].serialized_player
+            serialized_list[player[0].name] = player_with_score_serialized
+        return serialized_list

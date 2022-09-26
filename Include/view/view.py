@@ -7,7 +7,8 @@ START_MENU_TEXT = {
     'Option1' : "1 : Créer un tournoi",
     'Option2' : "2 : Ajoutez un joueur",
     'Option3' : "3 : Changer le rang d'un joueur",
-    'Option4' : "4 : Quittez",
+    'Option4' : "4 : Liste des rapports",
+    'Option5' : "5 : Quittez",
     'MessageInput' : "Veuillez entrer le numéro de l'option que vous désiré choisir :"
 }
 
@@ -27,7 +28,14 @@ SUB_MENU_SELECT_PLAYERS = {
 LIST_PLAYER_TEXT = {
     'Desctiption' : 'Voici la liste des joueurs : '
 }
-
+LIST_REPORT_TEXT = {
+    'Descirption' : '*********** Liste des rapports *********',
+    'Option1' : '1 : Afficher la liste des joueurs',
+    'Option2' : '2 : Afficher la liste des joueurs d''un trournoi',
+    'option3' : '3 : Afficher la liste des tournois',
+    'option4' : '4 : Afficher la listes des rounds d''un tournoi',
+    'option5' : '5 : Afficher la liste des matchs d''un tournoi'
+}
 def print_menu(message_dict):
     """Print the message of the menu selected"""
     for k in message_dict.keys():
@@ -37,7 +45,14 @@ def print_list(list_player):
     """Print a list of player from a tournament player list"""
     for player in list_player:
         print(player[0].name)
+
+def print_list_full(list_player):
+    """Print a list of player from a tournament player list"""
+    for player in list_player:
+        print('Nom : ' + player.name +' - Prénom : ' + player.firstname + '- Rank : ' + str(player.rank))
+
 def print_end_menu():
+    """Print end of menus"""
     print('**************************************************')
 
 class View :
@@ -93,6 +108,11 @@ class View :
         print_menu(LIST_PLAYER_TEXT)
         print_list(tournament_list)
 
+    def player_list_ranking_all(self,tournament_list):
+        """Print a list of player"""
+        print_menu(LIST_PLAYER_TEXT)
+        print_list_full(tournament_list)
+
     def final_tournament_list_ranking(self,tournament_list):
         """Print the winner and the winners of the list"""
         print('*********** Resultats ***********')
@@ -100,3 +120,8 @@ class View :
         print('Voici la liste finale des joueurs : ')
         for player in tournament_list:
             print(player[0].name, '- score : ', str(player[1]))
+
+    def report_menu(self):
+        print_menu(LIST_REPORT_TEXT)
+        option = int(input('Veuillez selectionner une option : '))
+        return option

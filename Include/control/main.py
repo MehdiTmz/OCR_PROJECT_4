@@ -40,9 +40,9 @@ else :
     players_table = db.table('player')
 
 if db.table('tournament'):
-    tournament_table = db.table('player')
+    tournaments_table = db.table('tournament')
 else:
-    tournament_table = db.table('player')
+    tournaments_table = db.table('tournament')
 
 def player_selection_control(full_player_list, view):
 
@@ -111,6 +111,7 @@ def create_new_tournament(view):
     new_tournament.round_x('Round 4')
     new_tournament.tournament.update_score_list()
     view.final_tournament_list_ranking(new_tournament.tournament.players)
+
     return new_tournament.tournament
 
 
@@ -127,8 +128,11 @@ while True:
         new_tournament = create_new_tournament(view)
         for x in new_tournament.rounds:
             print(x)
-
+        list_player_serialized = new_tournament.list_player_serialization()
+        new_tournament.serialize_tournament(list_player_serialized)
+        print(new_tournament.serialized_tournament) 
         list_all_tournament.append(new_tournament)
+        tournaments_table.insert(new_tournament.serialized_tournament)
 
 
     if option == 2:
@@ -137,8 +141,15 @@ while True:
         player_to_add.serial_player()
         players_table.insert(player_to_add.serialized_player)
 
-
     if option == 4:
+        option_report_chosen = view.report_menu()
+        if option_report_chosen == 1:
+            view.player_list_ranking_all(full_player_list)
+        if option_report_chosen == 3:
+            for actual_tournament in tournaments_table:
+                print(actual_tournament['name'],actual_tournament['place'],actual_tournament['date'])
+
+    if option == 5:
         print('Bonne journée !')
         break
 
