@@ -61,7 +61,7 @@ def player_selection_control(full_player_list, view):
             for p in full_player_list:
                 count = 1
                 if p.name == player_name:
-                    print(count,': ' + p.name)
+                    print(count,': ' + p.name + ' - ' + p.firstname + ' - ' + p.rank )
                     player_found.append(p)
                     count += 1
                 else:
@@ -73,17 +73,16 @@ def player_selection_control(full_player_list, view):
         if option_player_selection == 2:
 
             new_player = view.player_input_view()
-            players.append(player)
-            player.serial_player()
-            players_table.insert(new_player.serialized_player)
+            players.append(new_player)
+            players_table.insert(player.serial_player())
 
     return players
 
 def round_menu_control(tournament, view):
 
     while True :
-        view.tournament_menu_display()
-        option_between_round = int(input('Veuillez selectionner un option : '))
+
+        option_between_round = view.tournament_menu_display()
 
         if option_between_round == 1:
 
@@ -100,7 +99,6 @@ def create_new_tournament(view):
     # tournament_player = player_selection_control(full_player_list,view)
     tournament_player = STATIC_LIST_PLAYER
     new_tournament.get_tournament_info(tournament_player)
-
     new_tournament.round_1('Round 1')
     print(new_tournament.tournament.players)
     round_menu_control(new_tournament.tournament.players,view)
@@ -126,29 +124,37 @@ while True:
     if option == 1:
         new_tournament = []
         new_tournament = create_new_tournament(view)
-        for x in new_tournament.rounds:
-            print(x)
+        # for round in new_tournament.rounds[0]:
+        #     #print(x)
+        #     print(round[0][0][0][0],round[0][0][0][1])
         list_player_serialized = new_tournament.list_player_serialization()
         new_tournament.serialize_tournament(list_player_serialized)
-        print(new_tournament.serialized_tournament) 
         list_all_tournament.append(new_tournament)
+        print(new_tournament.rounds)
+        print(new_tournament.rounds[1])
         tournaments_table.insert(new_tournament.serialized_tournament)
+        
 
 
     if option == 2:
         player_to_add = view.player_input_view()
         full_player_list.append(player_to_add)
-        player_to_add.serial_player()
-        players_table.insert(player_to_add.serialized_player)
+        players_table.insert(player_to_add.serial_player())
 
     if option == 4:
         option_report_chosen = view.report_menu()
         if option_report_chosen == 1:
             view.player_list_ranking_all(full_player_list)
-        if option_report_chosen == 3:
+        if option_report_chosen == 2:
+            input_tournament_name = str(input('Nom du tournoi : '))
             for actual_tournament in tournaments_table:
-                print(actual_tournament['name'],actual_tournament['place'],actual_tournament['date'])
-
+                if(actual_tournament['name'] == input_tournament_name):
+                    for player in range(0,8):
+                        print(actual_tournament['players'][str(player)]['name'] + ' - Rang : ' + str(actual_tournament['players'][str(player)]['rank']))
+                    # for player in actual_tournament['players']:
+                    #     print(player)
+        if option_report_chosen == 3:
+            view.print_list_tournament_all(tournaments_table)
     if option == 5:
         print('Bonne journée !')
         break

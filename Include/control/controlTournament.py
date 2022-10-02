@@ -11,13 +11,13 @@ def round_match(view,round,tournament):
     match : Match
 
     for actual_match in range(tournament.n_of_turns):
-        # result = random.randint(0,2)
-        # print(result)
+
         match_player_1 = round.list_player_pair[actual_match][0]
         match_player_2 = round.list_player_pair[actual_match][1]
 
         match = Match(match_player_1,match_player_2)
         result = view.input_match_result_view(match_player_1,match_player_2)
+
         round.list_matches_result.append(match.match_result(result))
 
         for player in tournament.players:
@@ -27,6 +27,10 @@ def round_match(view,round,tournament):
 
             if player[0] == match.player_and_score[1][0] :
                 player[1] = player[1] + match.player_and_score[1][1]
+
+        round.serialize_round()
+
+        #tournament.serialized_tournament['rounds'][round.name] = round.serialized_round
 
 class ControlTournament:
     """ControlTournament Class
@@ -61,9 +65,8 @@ class ControlTournament:
         input("Veuillez appyer sur une touche 'enter' quand le round est terminé. ")
         round.date_round_end = datetime.today()
         round_match(self.view,round,self.tournament)
-        serialized_round = [round.list_matches_result,str(round.date_round_begin),str(round.date_round_end)]
+        serialized_round = [round.list_matches_result,str(round.date_round_begin),str(round.date_round_end),round.name]
         self.tournament.rounds.append(serialized_round)
-
 
     def round_x(self, name):
         """Create other rounds"""
@@ -78,5 +81,5 @@ class ControlTournament:
         input("Veuillez appuyer sur une touche 'enter' quand le round est terminé. ")
         round.date_round_end = datetime.today()
         round_match(self.view,round,self.tournament)
-        serialized_round = [round.list_matches_result,str(round.date_round_begin),str(round.date_round_end)]
+        serialized_round = [round.list_matches_result,str(round.date_round_begin),str(round.date_round_end),round.name]
         self.tournament.rounds.append(serialized_round)

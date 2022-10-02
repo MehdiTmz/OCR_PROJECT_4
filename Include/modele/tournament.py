@@ -55,8 +55,8 @@ class Tournament:
         self.pair_list = []
 
         if round_1 :
-            for pairs_round_1 in range(4):
 
+            for pairs_round_1 in range(4):
                 pair = []
                 pair.append(self.players[pairs_round_1][0])
                 pair.append(self.players[pairs_round_1+4][0])
@@ -69,44 +69,48 @@ class Tournament:
             while len(self.pair_list)<4:
 
                 pair = []
-                #print(player_used)
+
                 for player in self.players:
 
-                    # if player[0] not in player_used and player[0] not in player[0].played_with:
-                    #     print(player[0].name, 'Already played with', player[0].played_with)
-                    #     pair.append(player[0])
-                    #     player_used.append(player[0])
                     if len(pair) == 0:
+
                         if player[0] not in player_used:
+
                             pair.append(player[0])
                             player_used.append(player[0])
+
                     if len(pair) == 1:
+
                         if pair[0] not in player[0].played_with and pair[0] != player[0] and player[0] not in player_used:
-                            # if (pair[0] != player[0]):
-                            #     print(player[0])
                             pair.append(player[0])
                             player_used.append(player[0])
+
                     if len(pair) == 2:
                         break
 
                 self.pair_list.append(pair)
-                #print(self.pair_list)
 
     def serialize_tournament(self,players):
         """Serialization of the tournament data"""
+
         self.serialized_tournament['name'] = self.name
         self.serialized_tournament['date'] = str(self.date)
         self.serialized_tournament['place'] = self.place
-        self.serialized_tournament['rounds'] = {}#self.rounds
+        self.serialized_tournament['rounds'] = {}
         self.serialized_tournament['players'] = players
         self.serialized_tournament['time_controls'] = self.time_controls
         self.serialized_tournament['description'] = self.description
 
     def list_player_serialization(self):
         """Serialization of the final player list"""
+
         serialized_list = {}
+        count = 0
         for player in self.players:
-            player[0].serial_player()
-            player_with_score_serialized = player[0].serialized_player
-            serialized_list[player[0].name] = player_with_score_serialized
+            player_with_score_serialized = player[0].serial_player()
+            serialized_list[count] = player_with_score_serialized
+            count +=1
         return serialized_list
+
+    def list_round_serialization(self):
+        pass

@@ -87,6 +87,8 @@ class View :
         """Print the tournament menu"""
         print_menu(SUB_MENU_TOURNAMENT_TEXT)
         print_end_menu()
+        output = int(input('Veuillez selectionner un option : '))
+        return output
 
     def tournament_player_selection_display(self):
         """Print the menu to select the player who participate at the tournament"""
@@ -125,3 +127,7 @@ class View :
         print_menu(LIST_REPORT_TEXT)
         option = int(input('Veuillez selectionner une option : '))
         return option
+    def print_list_tournament_all(self,tournaments_table):
+        "Print all the tournament with their name, place and date"
+        for actual_tournament in tournaments_table:
+            print(actual_tournament['name'],actual_tournament['place'],actual_tournament['date'])

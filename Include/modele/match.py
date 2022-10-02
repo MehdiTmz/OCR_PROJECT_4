@@ -19,7 +19,9 @@ def set_match_score(state):
     return score1,score2
 
 class Match:
-
+    """ Match class
+    has a two player as attribute
+    """
     def __init__(self, player1, player2):
 
         self.player1 = player1
@@ -27,6 +29,7 @@ class Match:
         self.player_and_score = []
 
     def match_result(self, state):
+        """Return a tuple with players and their result"""
 
         score = set_match_score(state)
         result = [[self.player1, score[0]], [self.player2, score[1]]]
@@ -34,3 +37,14 @@ class Match:
         self.player1.played_with.append(self.player2)
         self.player2.played_with.append(self.player1)
         return (result[0], result[1])
+
+    def serialize_match(self):
+        """ Return a serialized match"""
+
+        serialized_match = {}
+        serialized_match['players'] = self.player1.serial_player(),self.player2.serial_player()
+        serialized_match['scores'] = {
+                                        'score1': self.player_and_score[0][1],
+                                        'score2':self.player_and_score[1][1]
+                                        }
+        return serialized_match

@@ -12,3 +12,6 @@ STATIC_LIST_PLAYER = [
                         player.Player('player'+str(6), 'name', 'test', 'H', 6),
                         player.Player('player'+str(7), 'name', 'test', 'H', 7),
                         player.Player('player'+str(8), 'name', 'test', 'H', 4)]
+view = view()
+controller = mmaincontroller(view)
+controller.run()
