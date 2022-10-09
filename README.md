@@ -7,7 +7,7 @@ Le but de ce projet est de pouvoir créer gérer la création d'un tournoi et de
 On peut décomposer le programme en plusieurs menu.
 
 Le menu principale qui permet de :
-  1. Créez un nouveau tournoi
+  1. Créer un nouveau tournoi
   2. Ajouter un nouveau joueur
   3. Changer le rang d'un joueur
   4. Afficher le menu des rapports
