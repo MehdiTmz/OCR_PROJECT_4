@@ -1,7 +1,7 @@
 # OCR_PROJECT_4
 # Développez un programme logiciel en Python
 
-Le but de ce projet est de pouvoir créer gérer la création d'un tournoi et de pourvoir générer plusieur rapport.
+Le but de ce projet est de pouvoir créer gérer la création d'un tournoi et de pourvoir générer plusieurs rapports.
 
 ## Les menus
 On peut décomposer le programme en plusieurs menu.
