@@ -1,2 +1,17 @@
 # OCR_PROJECT_4
 Développez un programme logiciel en Python
+
+Le but de ce projet est de pouvoir créer gérer la création d'un tournoi et de pourvoir générer plusieur rapport.
+
+On peut décomposer le programme en plusieurs menu.
+
+Le menu principale qui permet de :
+  1. Créez un nouveau tournoi
+  2. Ajouter un nouveau joueur
+  3. Changer le rang d'un joueur
+  4. Afficher le menu des rapports
+
+Dans un tournoi, un sous-menu est disponible entre chaque round et permet de :
+  1. Passez au round suivant
+  2. Afficher la liste des joueurs d'un tournoi
+  3. Changer le rangs d'un joueur
