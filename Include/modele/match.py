@@ -1,7 +1,8 @@
 """Define a match"""
 
-def set_match_score(state):
 
+def set_match_score(state):
+    """give a score according to the input given by user"""
     if state == 1:
 
         score1 = 1.0
@@ -16,7 +17,8 @@ def set_match_score(state):
         score1 = 0.5
         score2 = 0.5
 
-    return score1,score2
+    return score1, score2
+
 
 class Match:
     """ Match class
@@ -41,10 +43,12 @@ class Match:
     def serialize_match(self):
         """ Return a serialized match"""
 
+        player1 = self.player1.serial_player()
+        player2 = self.player2.serial_player()
         serialized_match = {}
-        serialized_match['players'] = self.player1.serial_player(),self.player2.serial_player()
+        serialized_match['players'] = player1, player2
         serialized_match['scores'] = {
                                         'score1': self.player_and_score[0][1],
-                                        'score2':self.player_and_score[1][1]
+                                        'score2': self.player_and_score[1][1]
                                         }
         return serialized_match

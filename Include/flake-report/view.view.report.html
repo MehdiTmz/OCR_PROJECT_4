@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html>
+   <head>
+      <title>flake8 violations: view\view.py</title>
+      <meta http-equiv="Content-Type" value="text/html; charset=UTF-8">
+      <link rel="stylesheet" href="styles.css">
+<script>
+function bindHandler(link) {
+   var code = link.getAttribute('data-code');
+   var key = location.pathname + '#' + code;
+
+   var ul = link.parentNode.querySelector('.details');
+   if (sessionStorage[key] != 'open') {
+      ul.style.display = 'none';
+   }
+   link.addEventListener('click', function (event) {
+      if (!ul.style.display || ul.style.display == 'none') {
+         ul.style.display = 'block';
+         sessionStorage[key] = 'open';
+      } else {
+         ul.style.display = 'none';
+         sessionStorage[key] = 'closed';
+      }
+   });
+}
+
+window.addEventListener('DOMContentLoaded', function () {
+   var links = document.querySelectorAll('#index > li > a');
+   for (var i = 0; i < links.length; i++) {
+      bindHandler(links[i]);
+   }
+});
+</script>
+   </head>
+   <body>
+      <div id="masthead" class="sev-2"></div>
+      <div id="page">
+         <p id="srclink">
+            <a title="View full annotated source"
+               href="view.view.source.html">
+               <img src="file.svg" alt="&#x2261;">
+            </a></p>
+         <h1>
+            <a href="index.html">
+               <img src="back.svg" alt="&#x2B05;">
+               view\view.py
+            </a>
+         </h1>
+
+         <ul id="index">
+         
+         <li>
+            <a data-code="E501">
+               <span class="count sev-2">
+                  3
+               </span>
+               <strong>E501:</strong> line too long (97 > 79 characters)
+               
+                  (and 2 similar)
+               
+            </a>
+            <ul class="details">
+            <li>
+               
+               <p>Line too long (97 > 79 characters):</p>
+               
+               <a href="view.view.source.html#l133">
+                  <tt><i>133</i>         <span class="n">text</span> <span class="o">=</span> <span class="s1">&#39;Resultat (1 : joueur 1 gagne, 2 : joueur 2 gagne, un autre nombre si égalité) : &#39;</span></tt>
+               </a>
+            </li><li>
+               
+               <p>Line too long (93 > 79 characters):</p>
+               
+               <a href="view.view.source.html#l168">
+                  <tt><i>168</i>         <span class="n">time_text</span> <span class="o">=</span> <span class="s1">&#39;Entrez le controleur de temps (1 : Blitz, 2 : Bullet, 3 : coup rapide):&#39;</span></tt>
+               </a>
+            </li><li>
+               
+               <p>Line too long (98 > 79 characters):</p>
+               
+               <a href="view.view.source.html#l213">
+                  <tt><i>213</i>                     <span class="n">actual_round</span> <span class="o">=</span> <span class="n">actual_tournament</span><span class="p">[</span><span class="s1">&#39;Rounds&#39;</span><span class="p">][</span><span class="s1">&#39;Round&#39;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">count_match</span><span class="p">)]</span><span class="o">.</span><span class="n">items</span><span class="p">()</span></tt>
+               </a>
+            </li>
+            </ul>
+         </li>
+         
+         <li>
+            <a data-code="W605">
+               <span class="count sev-2">
+                  3
+               </span>
+               <strong>W605:</strong> invalid escape sequence '\/'
+               
+                  (and 1 similar)
+               
+            </a>
+            <ul class="details">
+            <li>
+               
+               <p>Invalid escape sequence '\/' (in 2 places):</p>
+               
+               <a href="view.view.source.html#l102">
+                  <tt><i>102</i>     <span class="n">date_format</span> <span class="o">=</span> <span class="s2">&quot;^([0-2][0-9]|(3)[0-1])(\/)(((0)[0-9])|((1)[0-2]))(\/)\d</span><span class="si">{4}</span><span class="s2">$&quot;</span></tt>
+               </a>
+            </li><li>
+               
+               <p>Invalid escape sequence '\d':</p>
+               
+               <a href="view.view.source.html#l102">
+                  <tt><i>102</i>     <span class="n">date_format</span> <span class="o">=</span> <span class="s2">&quot;^([0-2][0-9]|(3)[0-1])(\/)(((0)[0-9])|((1)[0-2]))(\/)\d</span><span class="si">{4}</span><span class="s2">$&quot;</span></tt>
+               </a>
+            </li>
+            </ul>
+         </li>
+         
+         </ul>
+      </div>
+   </body>
+</html>

@@ -1,13 +1,9 @@
-"""Define tournament controler"""
+from mainController import mainController
 from Include.modele.player import Player
-from Include.modele.match import Match
-from Include.modele.round import Round
-from Include.modele.tournament import Tournament
-from datetime import datetime
-from controlTournament import ControlTournament
 from Include.view.view import View
-from tinydb import TinyDB, Query
 import random
+
+
 
 RANK = [
     1, 2, 3, 4, 5, 6, 7, 8
@@ -24,8 +20,13 @@ STATIC_LIST_PLAYER = [
                         Player('player'+str(6), 'name', 'test', 'H', RANK[5]),
                         Player('player'+str(7), 'name', 'test', 'H', RANK[6]),
                         Player('player'+str(8), 'name', 'test', 'H', RANK[7])]
-                        
-for match in range(0,7,2):
-    actual_match = Match(STATIC_LIST_PLAYER[1],STATIC_LIST_PLAYER[2])
-    rounds = actual_match.match_result(1)
-    rounds.append(actual_match)
+# view = View()
+# main = mainController(view)
+# main.run()
+while True:
+    user_input = input("Enter something:")
+
+    if user_input.isnumeric():
+        print("Is a number")
+    else:
+        print("Not a number")

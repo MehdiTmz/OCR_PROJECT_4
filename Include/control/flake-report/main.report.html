@@ -1,0 +1,437 @@
+<!DOCTYPE html>
+<html>
+   <head>
+      <title>flake8 violations: main.py</title>
+      <meta http-equiv="Content-Type" value="text/html; charset=UTF-8">
+      <link rel="stylesheet" href="styles.css">
+<script>
+function bindHandler(link) {
+   var code = link.getAttribute('data-code');
+   var key = location.pathname + '#' + code;
+
+   var ul = link.parentNode.querySelector('.details');
+   if (sessionStorage[key] != 'open') {
+      ul.style.display = 'none';
+   }
+   link.addEventListener('click', function (event) {
+      if (!ul.style.display || ul.style.display == 'none') {
+         ul.style.display = 'block';
+         sessionStorage[key] = 'open';
+      } else {
+         ul.style.display = 'none';
+         sessionStorage[key] = 'closed';
+      }
+   });
+}
+
+window.addEventListener('DOMContentLoaded', function () {
+   var links = document.querySelectorAll('#index > li > a');
+   for (var i = 0; i < links.length; i++) {
+      bindHandler(links[i]);
+   }
+});
+</script>
+   </head>
+   <body>
+      <div id="masthead" class="sev-1"></div>
+      <div id="page">
+         <p id="srclink">
+            <a title="View full annotated source"
+               href="main.source.html">
+               <img src="file.svg" alt="&#x2261;">
+            </a></p>
+         <h1>
+            <a href="index.html">
+               <img src="back.svg" alt="&#x2B05;">
+               main.py
+            </a>
+         </h1>
+
+         <ul id="index">
+         
+         <li>
+            <a data-code="F401">
+               <span class="count sev-1">
+                  4
+               </span>
+               <strong>F401:</strong> 'Include.modele.match.Match' imported but unused
+               
+                  (and 3 similar)
+               
+            </a>
+            <ul class="details">
+            <li>
+               
+               <p>'Include.modele.match.Match' imported but unused:</p>
+               
+               <a href="main.source.html#l3">
+                  <tt><i>3</i> <span class="kn">from</span> <span class="nn">Include.modele.match</span> <span class="kn">import</span> <span class="n">Match</span></tt>
+               </a>
+            </li><li>
+               
+               <p>'Include.modele.round.Round' imported but unused:</p>
+               
+               <a href="main.source.html#l4">
+                  <tt><i>4</i> <span class="kn">from</span> <span class="nn">Include.modele.round</span> <span class="kn">import</span> <span class="n">Round</span></tt>
+               </a>
+            </li><li>
+               
+               <p>'datetime.datetime' imported but unused:</p>
+               
+               <a href="main.source.html#l6">
+                  <tt><i>6</i> <span class="kn">from</span> <span class="nn">datetime</span> <span class="kn">import</span> <span class="n">datetime</span></tt>
+               </a>
+            </li><li>
+               
+               <p>'tinydb.Query' imported but unused:</p>
+               
+               <a href="main.source.html#l9">
+                  <tt><i>9</i> <span class="kn">from</span> <span class="nn">tinydb</span> <span class="kn">import</span> <span class="n">TinyDB</span><span class="p">,</span> <span class="n">Query</span></tt>
+               </a>
+            </li>
+            </ul>
+         </li>
+         
+         <li>
+            <a data-code="E231">
+               <span class="count sev-2">
+                  9
+               </span>
+               <strong>E231:</strong> missing whitespace after ','
+               
+            </a>
+            <ul class="details">
+            <li>
+               
+               <p>Missing whitespace after ',':</p>
+               
+               <a href="main.source.html#l35">
+                  <tt><i>35</i>         <span class="n">player_to_add</span> <span class="o">=</span> <span class="n">Player</span><span class="p">(</span><span class="n">player</span><span class="p">[</span><span class="s1">&#39;name&#39;</span><span class="p">],</span><span class="n">player</span><span class="p">[</span><span class="s1">&#39;firstname&#39;</span><span class="p">],</span></tt>
+               </a>
+            </li><li>
+               
+               <p>Missing whitespace after ',' (in 2 places):</p>
+               
+               <a href="main.source.html#l36">
+                  <tt><i>36</i>                                 <span class="n">player</span><span class="p">[</span><span class="s1">&#39;birthdate&#39;</span><span class="p">],</span><span class="n">player</span><span class="p">[</span><span class="s1">&#39;sex&#39;</span><span class="p">],</span><span class="n">player</span><span class="p">[</span><span class="s1">&#39;rank&#39;</span><span class="p">])</span></tt>
+               </a>
+            </li><li>
+               
+               <p>Missing whitespace after ',':</p>
+               
+               <a href="main.source.html#l63">
+                  <tt><i>63</i>                     <span class="nb">print</span><span class="p">(</span><span class="n">count</span><span class="p">,</span><span class="s1">&#39;: &#39;</span> <span class="o">+</span> <span class="n">player</span><span class="o">.</span><span class="n">name</span> <span class="o">+</span> <span class="s1">&#39; - &#39;</span> <span class="o">+</span> <span class="n">player</span><span class="o">.</span><span class="n">firstname</span> <span class="o">+</span> <span class="s1">&#39; - &#39;</span><span class="o">+</span> <span class="n">player</span><span class="o">.</span><span class="n">birthdate</span> <span class="o">+</span> <span class="s1">&#39; - &#39;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">player</span><span class="o">.</span><span class="n">rank</span><span class="p">)</span> <span class="p">)</span></tt>
+               </a>
+            </li><li>
+               
+               <p>Missing whitespace after ',':</p>
+               
+               <a href="main.source.html#l87">
+                  <tt><i>87</i>             <span class="nb">print</span><span class="p">(</span><span class="n">count</span><span class="p">,</span><span class="s1">&#39;: &#39;</span> <span class="o">+</span> <span class="n">actual_player</span><span class="o">.</span><span class="n">name</span> <span class="o">+</span> <span class="s1">&#39; - &#39;</span> <span class="o">+</span> <span class="n">actual_player</span><span class="o">.</span><span class="n">firstname</span> <span class="o">+</span> <span class="s1">&#39; - &#39;</span><span class="o">+</span> <span class="n">actual_player</span><span class="o">.</span><span class="n">birthdate</span> <span class="o">+</span> <span class="s1">&#39; - &#39;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">actual_player</span><span class="o">.</span><span class="n">rank</span><span class="p">)</span> <span class="p">)</span></tt>
+               </a>
+            </li><li>
+               
+               <p>Missing whitespace after ',':</p>
+               
+               <a href="main.source.html#l126">
+                  <tt><i>126</i>     <span class="n">round_menu_control</span><span class="p">(</span><span class="n">new_tournament</span><span class="o">.</span><span class="n">tournament</span><span class="o">.</span><span class="n">players</span><span class="p">,</span><span class="n">view</span><span class="p">)</span></tt>
+               </a>
+            </li><li>
+               
+               <p>Missing whitespace after ',':</p>
+               
+               <a href="main.source.html#l128">
+                  <tt><i>128</i>     <span class="n">round_menu_control</span><span class="p">(</span><span class="n">new_tournament</span><span class="o">.</span><span class="n">tournament</span><span class="o">.</span><span class="n">players</span><span class="p">,</span><span class="n">view</span><span class="p">)</span></tt>
+               </a>
+            </li><li>
+               
+               <p>Missing whitespace after ',':</p>
+               
+               <a href="main.source.html#l130">
+                  <tt><i>130</i>     <span class="n">round_menu_control</span><span class="p">(</span><span class="n">new_tournament</span><span class="o">.</span><span class="n">tournament</span><span class="o">.</span><span class="n">players</span><span class="p">,</span><span class="n">view</span><span class="p">)</span></tt>
+               </a>
+            </li><li>
+               
+               <p>Missing whitespace after ',':</p>
+               
+               <a href="main.source.html#l176">
+                  <tt><i>176</i>                     <span class="k">for</span> <span class="n">player</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">8</span><span class="p">):</span></tt>
+               </a>
+            </li>
+            </ul>
+         </li>
+         
+         <li>
+            <a data-code="E501">
+               <span class="count sev-2">
+                  8
+               </span>
+               <strong>E501:</strong> line too long (81 > 79 characters)
+               
+                  (and 6 similar)
+               
+            </a>
+            <ul class="details">
+            <li>
+               
+               <p>Line too long (81 > 79 characters):</p>
+               
+               <a href="main.source.html#l36">
+                  <tt><i>36</i>                                 <span class="n">player</span><span class="p">[</span><span class="s1">&#39;birthdate&#39;</span><span class="p">],</span><span class="n">player</span><span class="p">[</span><span class="s1">&#39;sex&#39;</span><span class="p">],</span><span class="n">player</span><span class="p">[</span><span class="s1">&#39;rank&#39;</span><span class="p">])</span></tt>
+               </a>
+            </li><li>
+               
+               <p>Line too long (80 > 79 characters):</p>
+               
+               <a href="main.source.html#l57">
+                  <tt><i>57</i>             <span class="n">player_name</span> <span class="o">=</span> <span class="nb">input</span><span class="p">(</span><span class="s1">&#39;Entrez le nom du joueur que vous recherchez :&#39;</span><span class="p">)</span></tt>
+               </a>
+            </li><li>
+               
+               <p>Line too long (132 > 79 characters):</p>
+               
+               <a href="main.source.html#l63">
+                  <tt><i>63</i>                     <span class="nb">print</span><span class="p">(</span><span class="n">count</span><span class="p">,</span><span class="s1">&#39;: &#39;</span> <span class="o">+</span> <span class="n">player</span><span class="o">.</span><span class="n">name</span> <span class="o">+</span> <span class="s1">&#39; - &#39;</span> <span class="o">+</span> <span class="n">player</span><span class="o">.</span><span class="n">firstname</span> <span class="o">+</span> <span class="s1">&#39; - &#39;</span><span class="o">+</span> <span class="n">player</span><span class="o">.</span><span class="n">birthdate</span> <span class="o">+</span> <span class="s1">&#39; - &#39;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">player</span><span class="o">.</span><span class="n">rank</span><span class="p">)</span> <span class="p">)</span></tt>
+               </a>
+            </li><li>
+               
+               <p>Line too long (152 > 79 characters):</p>
+               
+               <a href="main.source.html#l87">
+                  <tt><i>87</i>             <span class="nb">print</span><span class="p">(</span><span class="n">count</span><span class="p">,</span><span class="s1">&#39;: &#39;</span> <span class="o">+</span> <span class="n">actual_player</span><span class="o">.</span><span class="n">name</span> <span class="o">+</span> <span class="s1">&#39; - &#39;</span> <span class="o">+</span> <span class="n">actual_player</span><span class="o">.</span><span class="n">firstname</span> <span class="o">+</span> <span class="s1">&#39; - &#39;</span><span class="o">+</span> <span class="n">actual_player</span><span class="o">.</span><span class="n">birthdate</span> <span class="o">+</span> <span class="s1">&#39; - &#39;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">actual_player</span><span class="o">.</span><span class="n">rank</span><span class="p">)</span> <span class="p">)</span></tt>
+               </a>
+            </li><li>
+               
+               <p>Line too long (158 > 79 characters):</p>
+               
+               <a href="main.source.html#l95">
+                  <tt><i>95</i>         <span class="k">if</span><span class="p">(</span><span class="n">player_found</span><span class="p">[</span><span class="n">index_player</span> <span class="o">-</span> <span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">name</span> <span class="o">==</span> <span class="n">actual_player_in_list</span><span class="o">.</span><span class="n">name</span> <span class="ow">and</span> <span class="n">player_found</span><span class="p">[</span><span class="n">index_player</span> <span class="o">-</span> <span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">firstname</span> <span class="o">==</span> <span class="n">actual_player_in_list</span><span class="o">.</span><span class="n">firstname</span><span class="p">):</span></tt>
+               </a>
+            </li><li>
+               
+               <p>Line too long (96 > 79 characters):</p>
+               
+               <a href="main.source.html#l96">
+                  <tt><i>96</i>             <span class="n">actual_player_in_list</span><span class="o">.</span><span class="n">rank</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="nb">input</span><span class="p">(</span><span class="s1">&#39;Veuillez entrez le nouveau rang du joueur&#39;</span><span class="p">))</span></tt>
+               </a>
+            </li><li>
+               
+               <p>Line too long (93 > 79 characters):</p>
+               
+               <a href="main.source.html#l152">
+                  <tt><i>152</i>         <span class="n">tournaments_table</span><span class="o">.</span><span class="n">insert</span><span class="p">(</span><span class="n">new_tournament</span><span class="o">.</span><span class="n">serialize_tournament</span><span class="p">(</span><span class="n">list_player_serialized</span><span class="p">))</span></tt>
+               </a>
+            </li><li>
+               
+               <p>Line too long (152 > 79 characters):</p>
+               
+               <a href="main.source.html#l177">
+                  <tt><i>177</i>                         <span class="nb">print</span><span class="p">(</span><span class="n">actual_tournament</span><span class="p">[</span><span class="s1">&#39;players&#39;</span><span class="p">][</span><span class="nb">str</span><span class="p">(</span><span class="n">player</span><span class="p">)][</span><span class="s1">&#39;name&#39;</span><span class="p">]</span> <span class="o">+</span> <span class="s1">&#39; - Rang : &#39;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">actual_tournament</span><span class="p">[</span><span class="s1">&#39;players&#39;</span><span class="p">][</span><span class="nb">str</span><span class="p">(</span><span class="n">player</span><span class="p">)][</span><span class="s1">&#39;rank&#39;</span><span class="p">]))</span></tt>
+               </a>
+            </li>
+            </ul>
+         </li>
+         
+         <li>
+            <a data-code="E225">
+               <span class="count sev-2">
+                  4
+               </span>
+               <strong>E225:</strong> missing whitespace around operator
+               
+            </a>
+            <ul class="details">
+            <li>
+               
+               <a href="main.source.html#l58">
+                  <tt><i>58</i>             <span class="n">player_found</span> <span class="o">=</span><span class="p">[]</span></tt>
+               </a>
+            </li><li>
+               
+               <a href="main.source.html#l63">
+                  <tt><i>63</i>                     <span class="nb">print</span><span class="p">(</span><span class="n">count</span><span class="p">,</span><span class="s1">&#39;: &#39;</span> <span class="o">+</span> <span class="n">player</span><span class="o">.</span><span class="n">name</span> <span class="o">+</span> <span class="s1">&#39; - &#39;</span> <span class="o">+</span> <span class="n">player</span><span class="o">.</span><span class="n">firstname</span> <span class="o">+</span> <span class="s1">&#39; - &#39;</span><span class="o">+</span> <span class="n">player</span><span class="o">.</span><span class="n">birthdate</span> <span class="o">+</span> <span class="s1">&#39; - &#39;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">player</span><span class="o">.</span><span class="n">rank</span><span class="p">)</span> <span class="p">)</span></tt>
+               </a>
+            </li><li>
+               
+               <a href="main.source.html#l81">
+                  <tt><i>81</i>     <span class="n">player_found</span> <span class="o">=</span><span class="p">[]</span></tt>
+               </a>
+            </li><li>
+               
+               <a href="main.source.html#l87">
+                  <tt><i>87</i>             <span class="nb">print</span><span class="p">(</span><span class="n">count</span><span class="p">,</span><span class="s1">&#39;: &#39;</span> <span class="o">+</span> <span class="n">actual_player</span><span class="o">.</span><span class="n">name</span> <span class="o">+</span> <span class="s1">&#39; - &#39;</span> <span class="o">+</span> <span class="n">actual_player</span><span class="o">.</span><span class="n">firstname</span> <span class="o">+</span> <span class="s1">&#39; - &#39;</span><span class="o">+</span> <span class="n">actual_player</span><span class="o">.</span><span class="n">birthdate</span> <span class="o">+</span> <span class="s1">&#39; - &#39;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">actual_player</span><span class="o">.</span><span class="n">rank</span><span class="p">)</span> <span class="p">)</span></tt>
+               </a>
+            </li>
+            </ul>
+         </li>
+         
+         <li>
+            <a data-code="E302">
+               <span class="count sev-2">
+                  4
+               </span>
+               <strong>E302:</strong> expected 2 blank lines, found 1
+               
+                  (and 1 similar)
+               
+            </a>
+            <ul class="details">
+            <li>
+               
+               <p>Expected 2 blank lines, found 1:</p>
+               
+               <a href="main.source.html#l46">
+                  <tt><i>46</i> <span class="k">def</span> <span class="nf">player_selection_control</span><span class="p">(</span><span class="n">full_player_list</span><span class="p">,</span> <span class="n">view</span><span class="p">):</span></tt>
+               </a>
+            </li><li>
+               
+               <p>Expected 2 blank lines, found 0:</p>
+               
+               <a href="main.source.html#l79">
+                  <tt><i>79</i> <span class="k">def</span> <span class="nf">player_rank_control</span><span class="p">(</span><span class="n">player_list</span><span class="p">):</span></tt>
+               </a>
+            </li><li>
+               
+               <p>Expected 2 blank lines, found 1:</p>
+               
+               <a href="main.source.html#l100">
+                  <tt><i>100</i> <span class="k">def</span> <span class="nf">round_menu_control</span><span class="p">(</span><span class="n">tournament</span><span class="p">,</span> <span class="n">view</span><span class="p">):</span></tt>
+               </a>
+            </li><li>
+               
+               <p>Expected 2 blank lines, found 1:</p>
+               
+               <a href="main.source.html#l117">
+                  <tt><i>117</i> <span class="k">def</span> <span class="nf">create_new_tournament</span><span class="p">(</span><span class="n">view</span><span class="p">):</span></tt>
+               </a>
+            </li>
+            </ul>
+         </li>
+         
+         <li>
+            <a data-code="E303">
+               <span class="count sev-2">
+                  3
+               </span>
+               <strong>E303:</strong> too many blank lines (3)
+               
+                  (and 1 similar)
+               
+            </a>
+            <ul class="details">
+            <li>
+               
+               <p>Too many blank lines (3):</p>
+               
+               <a href="main.source.html#l156">
+                  <tt><i>156</i>     <span class="k">if</span> <span class="n">option</span> <span class="o">==</span> <span class="mi">2</span><span class="p">:</span></tt>
+               </a>
+            </li><li>
+               
+               <p>Too many blank lines (2):</p>
+               
+               <a href="main.source.html#l168">
+                  <tt><i>168</i>     <span class="k">if</span> <span class="n">option</span> <span class="o">==</span> <span class="mi">4</span><span class="p">:</span></tt>
+               </a>
+            </li><li>
+               
+               <p>Too many blank lines (2):</p>
+               
+               <a href="main.source.html#l184">
+                  <tt><i>184</i>     <span class="k">if</span> <span class="n">option</span> <span class="o">==</span> <span class="mi">5</span><span class="p">:</span></tt>
+               </a>
+            </li>
+            </ul>
+         </li>
+         
+         <li>
+            <a data-code="E202">
+               <span class="count sev-2">
+                  2
+               </span>
+               <strong>E202:</strong> whitespace before ')'
+               
+            </a>
+            <ul class="details">
+            <li>
+               
+               <a href="main.source.html#l63">
+                  <tt><i>63</i>                     <span class="nb">print</span><span class="p">(</span><span class="n">count</span><span class="p">,</span><span class="s1">&#39;: &#39;</span> <span class="o">+</span> <span class="n">player</span><span class="o">.</span><span class="n">name</span> <span class="o">+</span> <span class="s1">&#39; - &#39;</span> <span class="o">+</span> <span class="n">player</span><span class="o">.</span><span class="n">firstname</span> <span class="o">+</span> <span class="s1">&#39; - &#39;</span><span class="o">+</span> <span class="n">player</span><span class="o">.</span><span class="n">birthdate</span> <span class="o">+</span> <span class="s1">&#39; - &#39;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">player</span><span class="o">.</span><span class="n">rank</span><span class="p">)</span> <span class="p">)</span></tt>
+               </a>
+            </li><li>
+               
+               <a href="main.source.html#l87">
+                  <tt><i>87</i>             <span class="nb">print</span><span class="p">(</span><span class="n">count</span><span class="p">,</span><span class="s1">&#39;: &#39;</span> <span class="o">+</span> <span class="n">actual_player</span><span class="o">.</span><span class="n">name</span> <span class="o">+</span> <span class="s1">&#39; - &#39;</span> <span class="o">+</span> <span class="n">actual_player</span><span class="o">.</span><span class="n">firstname</span> <span class="o">+</span> <span class="s1">&#39; - &#39;</span><span class="o">+</span> <span class="n">actual_player</span><span class="o">.</span><span class="n">birthdate</span> <span class="o">+</span> <span class="s1">&#39; - &#39;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">actual_player</span><span class="o">.</span><span class="n">rank</span><span class="p">)</span> <span class="p">)</span></tt>
+               </a>
+            </li>
+            </ul>
+         </li>
+         
+         <li>
+            <a data-code="E203">
+               <span class="count sev-2">
+                  2
+               </span>
+               <strong>E203:</strong> whitespace before ':'
+               
+            </a>
+            <ul class="details">
+            <li>
+               
+               <a href="main.source.html#l38">
+                  <tt><i>38</i> <span class="k">else</span> <span class="p">:</span></tt>
+               </a>
+            </li><li>
+               
+               <a href="main.source.html#l102">
+                  <tt><i>102</i>     <span class="k">while</span> <span class="kc">True</span> <span class="p">:</span></tt>
+               </a>
+            </li>
+            </ul>
+         </li>
+         
+         <li>
+            <a data-code="W293">
+               <span class="count sev-2">
+                  2
+               </span>
+               <strong>W293:</strong> blank line contains whitespace
+               
+            </a>
+            <ul class="details">
+            <li>
+               
+               <a href="main.source.html#l97">
+                  <tt><i>97</i>     </tt>
+               </a>
+            </li><li>
+               
+               <a href="main.source.html#l113">
+                  <tt><i>113</i>         </tt>
+               </a>
+            </li>
+            </ul>
+         </li>
+         
+         <li>
+            <a data-code="E127">
+               <span class="count sev-2">
+                  1
+               </span>
+               <strong>E127:</strong> continuation line over-indented for visual indent
+               
+            </a>
+            <ul class="details">
+            <li>
+               
+               <a href="main.source.html#l36">
+                  <tt><i>36</i>                                 <span class="n">player</span><span class="p">[</span><span class="s1">&#39;birthdate&#39;</span><span class="p">],</span><span class="n">player</span><span class="p">[</span><span class="s1">&#39;sex&#39;</span><span class="p">],</span><span class="n">player</span><span class="p">[</span><span class="s1">&#39;rank&#39;</span><span class="p">])</span></tt>
+               </a>
+            </li>
+            </ul>
+         </li>
+         
+         </ul>
+      </div>
+   </body>
+</html>

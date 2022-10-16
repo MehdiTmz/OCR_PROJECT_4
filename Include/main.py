@@ -1,17 +1,13 @@
-import modele.player as player
-import modele.match as match
-import modele.tour as tour
-from datetime import datetime
+from Include.control.mainController import mainController
+from Include.modele.player import Player
+from Include.view.view import View
+import random
 
-STATIC_LIST_PLAYER = [
-                        player.Player('player'+str(1), 'name', 'test', 'H', 1),
-                        player.Player('player'+str(2), 'name', 'test', 'H', 2),
-                        player.Player('player'+str(3), 'name', 'test', 'H', 3),
-                        player.Player('player'+str(4), 'name', 'test', 'H', 8),
-                        player.Player('player'+str(5), 'name', 'test', 'H', 5),
-                        player.Player('player'+str(6), 'name', 'test', 'H', 6),
-                        player.Player('player'+str(7), 'name', 'test', 'H', 7),
-                        player.Player('player'+str(8), 'name', 'test', 'H', 4)]
-view = view()
-controller = mmaincontroller(view)
-controller.run()
+
+view = View()
+controller = mainController(view)
+
+
+if __name__ == "__main__":
+
+    controller.run()
