@@ -20,15 +20,15 @@ class Tournament:
     """
     def __repr__(self):
 
-        return (self.name
-                + ' - Lieu : ' + str(self.place)
-                + ' - Date : ' + str(self.date))
+        return (self.name +
+                ' - Lieu : ' + str(self.place) +
+                ' - Date : ' + str(self.date))
 
     def __str__(self):
 
-        return (self.name
-                + ' - Lieu : ' + str(self.place)
-                + ' - Date : ' + str(self.date))
+        return (self.name +
+                ' - Lieu : ' + str(self.place) +
+                ' - Date : ' + str(self.date))
 
     def __init__(self, name: str = 'unknown', place: str = 'unknown',
                  date='unknown', n_of_turns: int = 4,
@@ -68,7 +68,7 @@ class Tournament:
             for pairs_round_1 in range(4):
                 pair = []
                 pair.append(self.players[pairs_round_1][0])
-                pair.append(self.players[pairs_round_1+4][0])
+                pair.append(self.players[pairs_round_1 + 4][0])
                 self.pair_list.append(pair)
 
         if not round_1:
@@ -90,11 +90,10 @@ class Tournament:
 
                     if len(pair) == 1:
 
-                        if (pair[0] not in player[0].played_with
-                                and pair[0] != player[0]
-                                and player[0] not in player_used):
-                            pair.append(player[0])
-                            player_used.append(player[0])
+                        if pair[0] not in player[0].played_with:
+                            if(pair[0] != player[0] and player[0] not in player_used):
+                                pair.append(player[0])
+                                player_used.append(player[0])
 
                     if len(pair) == 2:
                         break

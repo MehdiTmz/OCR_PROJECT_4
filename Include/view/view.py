@@ -1,7 +1,8 @@
 """Basic view"""
 from datetime import datetime
 from Include.modele.player import Player
-import re
+import os
+
 
 START_MENU_TEXT = {
     'Description': '*********** Bienvenue dans le menu principale *********',
@@ -34,10 +35,10 @@ LIST_PLAYER_TEXT = {
 LIST_REPORT_TEXT = {
     'Descirption': '*********** Liste des rapports *********',
     'Option1': '1 : Afficher la liste des joueurs',
-    'Option2': '2 : Afficher la liste des joueurs d''un trournoi',
+    'Option2': "2 : Afficher la liste des joueurs d'un trournoi",
     'option3': '3 : Afficher la liste des tournois',
-    'option4': '4 : Afficher la listes des rounds d''un tournoi',
-    'option5': '5 : Afficher la liste des matchs d''un tournoi'
+    'option4': "4 : Afficher la listes des rounds d'un trournoi",
+    'option5': "5 : Afficher la liste des matchs d'un trournoi"
 }
 
 
@@ -56,9 +57,7 @@ def print_list(list_player):
 def print_list_full(list_player):
     """Print a list of player from a tournament player list"""
     for player in list_player:
-        print('Nom : ' + player.name
-              + ' - Prénom : ' + player.firstname
-              + '- Rank : ' + str(player.rank))
+        print(player)
 
 
 def print_end_menu():
@@ -72,7 +71,7 @@ def control_option_input(size, mesg):
 
     while True:
         option_number = int(input(mesg))
-        for value in range(1, size+1):
+        for value in range(1, size + 1):
             number_of_option.append(value)
         if option_number in number_of_option:
             return option_number
@@ -83,6 +82,7 @@ def control_option_input(size, mesg):
 def control_word_input(mesg):
     """Control if there is a sepcial character
     or a number in the word entered by the user"""
+
     SPECIAL_CHARS_LIST = "!@#$%^&*()-+?_=,<>/'"
     DIGIT_LIST = "0123456789"
 
@@ -99,14 +99,27 @@ def control_word_input(mesg):
 
 def control_date_input(mesg):
     """Control the format of the date entered by the user"""
-    date_format = "^([0-2][0-9]|(3)[0-1])(\/)(((0)[0-9])|((1)[0-2]))(\/)\d{4}$"
+    correct_date = None
+
     while True:
         date = input(mesg)
-        test_date = re.search(date_format, date)
-        if test_date:
-            return date
-        else:
-            print('Entrez une date valide !')
+        date_test = date.split('/')
+        year = date_test[2]
+        month = date_test[1]
+        day = date_test[0]
+
+        if year.isnumeric() and month.isnumeric() and day.isnumeric():
+            if (len(year) == 4 and len(month) == 2 and len(day) == 2):
+                try:
+                    new_date = datetime.datetime(int(year), int(month), int(day))
+                    correct_date = True
+                except ValueError:
+                    correct_date = False
+
+            if correct_date:
+                return new_date
+
+        print("Please enter a valide date")
 
 
 def control_rank_number(mesg):
@@ -121,6 +134,30 @@ def control_rank_number(mesg):
         print("Vous avez utilisé un caractère non valide. Réessayez !")
 
 
+def control_sex(mesg):
+    """Control the user input for the sex of the player"""
+
+    while True:
+        sex = input(mesg)
+
+        if sex in ('M', 'F'):
+            return sex
+
+        print("Vous avez utilisé un caractère non valide. Réessayez !")
+
+
+def control_type_of_tournament(mesg):
+    """Controle the user input for the type of tournament"""
+
+    while True:
+        type_of_tournament = input(mesg)
+
+        if type_of_tournament in ('1', '2', '3'):
+            return type_of_tournament
+
+        print('Veuillez selectionner un option valide.')
+
+
 class View:
     """View class
 
@@ -133,8 +170,8 @@ class View:
         print('Veuillez entrer les données du joueur : ')
         name = control_word_input('Nom : ')
         firstname = control_word_input('Prénom : ')
-        birthdate = control_date_input('Date de naissance : ')
-        sex = control_word_input('Sexe : ')
+        birthdate = control_date_input('Date de naissance (JJ/MM/AAAA) : ')
+        sex = control_sex('Sexe (M/F) : ')
         rank = control_rank_number('Rang : ')
         return Player(name, firstname, birthdate, sex, rank)
 
@@ -142,14 +179,18 @@ class View:
         """Ask the result of a match between 2 player"""
 
         print('Match : ' + str(player1) + ' contre ' + str(player2))
-        text = 'Resultat (1 : joueur 1 gagne, 2 : joueur 2 gagne, un autre nombre si égalité) : '
+        text = ('Resultat' +
+                '(1 : joueur 1 gagne,' +
+                ' 2 : joueur 2 gagne,' +
+                'un autre nombre si égalité) : ')
         result = int(input(text))
 
         return result
 
     def start_menu_display(self):
-
         """Print the start menu"""
+
+        os.system('cls')
         print_menu(START_MENU_TEXT)
         option = int(input())
         print_end_menu()
@@ -177,8 +218,9 @@ class View:
         name_tournament = control_word_input('Entrez le nom du tournoi : ')
         place = control_word_input('Entrez l' + ' emplacement du tournoi : ')
         date = datetime.today()
-        time_text = 'Entrez le controleur de temps (1 : Blitz, 2 : Bullet, 3 : coup rapide):'
-        time_control = input(time_text)
+        time_text = ('Entrez le controleur de temps' +
+                     '(1 : Blitz, 2 : Bullet, 3 : coup rapide):')
+        time_control = control_type_of_tournament(time_text)
         description = input('Veuillez indiquez vos remarques : ')
 
         return name_tournament, place, str(date), time_control, description
@@ -216,13 +258,88 @@ class View:
 
     def print_rounds(self, tournaments_table):
         """Print all the rounds in a tournament"""
+
         input_tournament_name = str(input('Nom du tournoi : '))
         for actual_tournament in tournaments_table:
             if actual_tournament['name'] == input_tournament_name:
-                count_match = 1
-                for key, value in actual_tournament['Rounds'].items():
-                    print(key, ' : ')
-                    actual_round = actual_tournament['Rounds']['Round' + str(count_match)].items()
-                    for key2, value2 in actual_round:
-                        print(key2, ' : ', value2)
-                    count_match += 1
+                count_round = 1
+                for round_number, value in actual_tournament['Rounds'].items():
+
+                    actual_round = actual_tournament['Rounds']['Round' + str(count_round)]
+                    print(round_number,
+                          '- Debut :', actual_round['date_round_begin'],
+                          '- Fin :', actual_round['date_round_begin'],
+                          ' : ')
+
+                    for match_number, value2 in actual_round.items():
+
+                        if match_number in ('name',
+                                            'date_round_begin',
+                                            'date_round_end'):
+                            pass
+
+                        else:
+
+                            player1 = actual_round[match_number]['player1']["player"]
+                            score1 = actual_round[match_number]['player1']["score"]
+                            player2 = actual_round[match_number]['player2']["player"]
+                            score2 = actual_round[match_number]['player2']["score"]
+                            print('       ',
+                                  match_number, ' : ',
+                                  player1,
+                                  '(score : ', score1, ')',
+                                  ' contre ',
+                                  player2,
+                                  '(score : ', score2, ')',)
+
+                    count_round += 1
+
+    def print_matches(self, tournaments_table):
+        """Print all the rounds in a tournament"""
+        match_list = []
+        input_tournament_name = str(input('Nom du tournoi : '))
+        for actual_tournament in tournaments_table:
+            if actual_tournament['name'] == input_tournament_name:
+                count_round = 1
+                for round_number, value in actual_tournament['Rounds'].items():
+
+                    actual_round = actual_tournament['Rounds']['Round' + str(count_round)]
+                    print(round_number, actual_round['date_round_begin'], ' : ')
+
+                    for match_number, value2 in actual_round.items():
+
+                        if match_number in ('name',
+                                            'date_round_begin',
+                                            'date_round_end'):
+                            pass
+
+                        else:
+
+                            player1 = actual_round[match_number]['player1']["player"]
+                            score1 = actual_round[match_number]['player1']["score"]
+                            player2 = actual_round[match_number]['player2']["player"]
+                            score2 = actual_round[match_number]['player2']["score"]
+                            match_data = [player1, score1, player2, score2]
+                            match_list.append(match_data)
+
+                    count_round += 1
+
+        for matches in match_list:
+            match_index = match_list.index(matches)
+            print('Match' + str(match_index + 1),
+                  matches[0],
+                  '( score : ' + str(matches[1]) + ')',
+                  'contre',
+                  matches[2],
+                  '( score : ' + str(matches[3]) + ')')
+
+    def print_tournament_player_list(self, tournaments_table):
+        """Print list of tournament"""
+        input_tournament_name = str(input('Nom du tournoi : '))
+        for actual_tournament in tournaments_table:
+            if actual_tournament['name'] == input_tournament_name:
+                for player in range(0, 8):
+                    print(
+                        actual_tournament['players'][str(player)]['name'] +
+                        ' - Rang : ' +
+                        str(actual_tournament['players'][str(player)]['rank']))

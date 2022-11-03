@@ -1,12 +1,13 @@
-# from Include.modele.match import Match
-# from Include.modele.round import Round
-# from datetime import datetime
+"""Define controller """
+
+
 from Include.modele.player import Player
 from Include.modele.tournament import Tournament
 from Include.control.controlTournament import ControlTournament
 from Include.view.view import View
 from tinydb import TinyDB
 from tinydb import where
+
 
 def player_selection_control(full_player_list, view, players_table):
     """Manage the selection of players for a tournament"""
@@ -18,27 +19,32 @@ def player_selection_control(full_player_list, view, players_table):
         option_player_selection = int(input())
 
         if option_player_selection == 1:
-
-            text = 'Entrez le nom du joueur que vous recherchez :'
-            player_name = input(text)
             player_found = []
-            count = 1
-            for player in full_player_list:
 
-                if player.name == player_name:
-                    print(count, ': ' + player.name
-                          + ' - ' + player.firstname
-                          + ' - ' + player.birthdate + ' - '
-                          + str(player.rank))
-                    player_found.append(player)
-                    count += 1
+            while len(player_found) < 1:
+                text = 'Entrez le nom du joueur que vous recherchez : '
+                player_name = input(text)
+                count = 1
+                for player in full_player_list:
+
+                    if player.name == player_name:
+                        print(count, ': ' + player.name +
+                              ' - ' + player.firstname +
+                              ' - ' + player.birthdate +
+                              ' - ' + str(player.rank))
+                        player_found.append(player)
+                        count += 1
+
+                if len(player_found) < 1:
+                    print('Aucun joueur trouvé avec ce nom. Réessayez !')
 
                 else:
-                    pass
-                
+                    index_player = int(input('Confirmez le joueur : '))
 
-            index_player = int(input('Confirmez le joueur : '))
-            players.append(player_found[index_player - 1])
+                    if player_found[index_player - 1] in players:
+                        print('Ce joueur a déjà été selectionné.')
+                    else:
+                        players.append(player_found[index_player - 1])
 
         if option_player_selection == 2:
 
@@ -60,10 +66,10 @@ def player_rank_control(player_list, players_table):
 
         count = 1
         if actual_player.name == player_name:
-            print(count, ': ' + actual_player.name
-                  + ' - ' + actual_player.firstname
-                  + ' - ' + actual_player.birthdate + ' - '
-                  + str(actual_player.rank))
+            print(count, ': ' + actual_player.name +
+                  ' - ' + actual_player.firstname +
+                  ' - ' + actual_player.birthdate +
+                  ' - ' + str(actual_player.rank))
             player_found.append(actual_player)
             count += 1
         else:
@@ -74,14 +80,12 @@ def player_rank_control(player_list, players_table):
     firstname = player_found[index_player - 1].firstname
 
     for actual_player_in_list in player_list:
-        if(name == actual_player_in_list.name
-                and firstname == actual_player_in_list.firstname):
+        if(name == actual_player_in_list.name and firstname == actual_player_in_list.firstname):
 
             new_rank_txt = 'Veuillez entrez le nouveau rang du joueur'
             actual_player_in_list.rank = int(input(new_rank_txt))
             players_table.update({'rank': actual_player_in_list.rank},
-                                 (where('name') == name)
-                                 & (where('firstname') == firstname))
+                                 (where('name') == name) & (where('firstname') == firstname))
     return player_list
 
 
@@ -109,7 +113,7 @@ class mainController:
     view: View()
     full_player_list: list[Player] = []
     list_all_tournament: list[Tournament] = []
-    db = TinyDB('db.json')
+    db = TinyDB('data\db.json')
     players_table = db.table("player")
     tournaments_table = db.table('tournament')
     full_player_list = create_database_player(db)
@@ -202,20 +206,17 @@ class mainController:
                     self.view.player_list_ranking_all(self.full_player_list)
 
                 if option_report_chosen == 2:
-                    input_tournament_name = str(input('Nom du tournoi : '))
-                    for actual_tournament in self.tournaments_table:
-                        if actual_tournament['name'] == input_tournament_name:
-                            for player in range(0, 8):
-                                print(
-                                    actual_tournament['players'][str(player)]['name']
-                                    + ' - Rang : '
-                                    + str(actual_tournament['players'][str(player)]['rank']))
+                    self.view.print_tournament_player_list(
+                        self.tournaments_table)
 
                 if option_report_chosen == 3:
                     self.view.print_list_tournament_all(self.tournaments_table)
 
                 if option_report_chosen == 4:
                     self.view.print_rounds(self.tournaments_table)
+
+                if option_report_chosen == 5:
+                    self.view.print_matches(self.tournaments_table)
 
             if option == 5:
                 print('Bonne journée !')

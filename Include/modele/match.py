@@ -45,10 +45,9 @@ class Match:
 
         player1 = self.player1.serial_player()
         player2 = self.player2.serial_player()
+        score1 = self.player_and_score[0][1]
+        score2 = self.player_and_score[1][1]
         serialized_match = {}
         serialized_match['players'] = player1, player2
-        serialized_match['scores'] = {
-                                        'score1': self.player_and_score[0][1],
-                                        'score2': self.player_and_score[1][1]
-                                        }
+        serialized_match['scores'] = {'score1': score1, 'score2': score2}
         return serialized_match

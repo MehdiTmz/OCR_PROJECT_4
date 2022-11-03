@@ -13,7 +13,9 @@ class Player:
 
     def __str__(self):
 
-        return self.name + ' (Rang : ' + str(self.rank) + ')'
+        return (self.name + ' ' + self.firstname +
+                ' - Rang : ' + str(self.rank) +
+                ' - Date de naissance : ' + self.birthdate)
 
     def __init__(self, name: str = 'unknown', firstname: str = 'unknown',
                  birthdate: str = 'unknown', sex: str = 'unknown',

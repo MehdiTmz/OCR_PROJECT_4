@@ -45,12 +45,13 @@ class ControlTournament:
 
     def get_tournament_info(self, players: list = []):
         """Get the information of the tournament"""
+
         tournament_info = self.view.get_tournament_info()
         self.tournament.name = tournament_info[0]
         self.tournament.place = tournament_info[1]
-        self.tournament.date = datetime.today()
-        self.tournament.time_controls = tournament_info[2]
-        self.tournament.descrtipion = tournament_info[3]
+        self.tournament.date = tournament_info[2]
+        self.tournament.time_controls = tournament_info[3]
+        self.tournament.descrtipion = tournament_info[4]
 
         if players:
             # print("Debug : La liste des joueurs a bien été moddifiée")
