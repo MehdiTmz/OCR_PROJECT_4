@@ -8,7 +8,7 @@ Commencez tout d'abord par installer Python. Lancez ensuite la console, placez v
 
 ```git clone https://github.com/MehdiTmz/OCR_PROJECT_4```
 
-Placez vous dans le dossier OC_P4_ChessTournament, puis créez un nouvel environnement virtuel:
+Placez vous dans le dossier OCR_PROJECT_4, puis créez un nouvel environnement virtuel:
 
 ```python -m venv env```
 
