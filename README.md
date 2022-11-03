@@ -45,3 +45,12 @@ Dans le menu des rapports, on peut :
   3. Afficher la liste de tout les tournois
   4. Afficher la liste de tout les rounds d'un tournoi
   5. Afficher la liste de tout les matchs d'un tournoi
+
+## Générer le rapport Flake8
+Installez flake8 avec la commande:
+```pip intall flake8-html```
+
+Tapez la commande:
+```flake8 --format=html --htmldir=flake-report ```
+
+Le rapport sera généré dans le dossier flake8.
