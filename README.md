@@ -14,7 +14,7 @@ Placez vous dans le dossier OC_P4_ChessTournament, puis créez un nouvel environ
 
 Ensuite, activez-le. Windows:
 
-env\scripts\activate.bat
+```env\scripts\activate.bat```
 
 Il ne reste plus qu'à installer les packages requis:
 
