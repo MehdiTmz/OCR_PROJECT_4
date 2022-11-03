@@ -3,6 +3,25 @@
 
 Le but de ce projet est de pouvoir créer gérer la création d'un tournoi et de pourvoir générer plusieurs rapports.
 
+## Installation:
+Commencez tout d'abord par installer Python. Lancez ensuite la console, placez vous dans le dossier de votre choix puis clonez ce repository:
+
+```git clone https://github.com/MehdiTmz/OCR_PROJECT_4```
+Placez vous dans le dossier OC_P4_ChessTournament, puis créez un nouvel environnement virtuel:
+
+python -m venv env
+Ensuite, activez-le. Windows:
+
+env\scripts\activate.bat
+Linux:
+
+source env/bin/activate
+Il ne reste plus qu'à installer les packages requis:
+
+pip install -r requirements.txt
+Vous pouvez enfin lancer le script:
+
+python main.py
 ## Les menus
 On peut décomposer le programme en plusieurs menu.
 
